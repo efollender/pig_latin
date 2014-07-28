@@ -33,7 +33,7 @@ module PigLatin
       elsif type == "vowel"
         return word + "way"
       elsif "error"
-        puts "There's been an error. Check your input"
+        return "There's been an error. Check your input"
       end
     end
   end
