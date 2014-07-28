@@ -8,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = PigLatin::VERSION
   spec.authors       = ["Emma Follender"]
   spec.email         = ["efollender@gmail.com"]
-  spec.summary       = %q{Converts words to pig latin}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = ["Converts words to pig latin"]
   spec.homepage      = ""
   spec.license       = "MIT"
 
