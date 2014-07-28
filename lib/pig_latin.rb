@@ -26,13 +26,13 @@ module PigLatin
     def self.convert(word)
       type = PigLatin::WordDetect.checkType(word)
       if type == "y"
-        return (/[y]/.match(word).post_match + "yay")
+        return (/[y]/.match(word)).post_match + "yay")
       elsif type == "consonant"
-        match = /(^[^aeiou]+[^aeiou])/.match(word)
+        match = /(^[^aeiou]+[^aeiou])/.match(word).to_s
         return match.post_match + match.to_s + "ay"
       elsif type == "vowel"
         return word + "way"
-      elsif "error"
+      elsif !type
         return "There's been an error. Check your input"
       end
     end
