@@ -4,7 +4,7 @@ module PigLatin
   module WordDetect
 
     def self.validate(word)
-      word !~ /\W+/ ? (return true) : (return false)
+      word !~ /[0-9_\W]/ ? (return true) : (return false)
     end
 
     def self.checkType(word)
@@ -12,9 +12,9 @@ module PigLatin
       if valid
         if /[y]/.match(word[0])
           return "y"
-        elsif /(^[^aeiou]+)/.match(word).to_s
+        elsif /(^[^aeiouy]+)/.match(word)
           return "consonant"
-        elsif /[aeiou]/.match(word[0])
+        elsif /(^[aeiou])/.match(word[0])
           return "vowel"
         end
       else
@@ -26,13 +26,13 @@ module PigLatin
     def self.convert(word)
       type = PigLatin::WordDetect.checkType(word)
       if type == "y"
-        return (/[y]/.match(word)).post_match + "yay")
+        return (/[y]/.match(word).post_match + "yay")
       elsif type == "consonant"
-        match = /(^[^aeiou]+)/.match(word)
+        match = /(^[^aeiouy]+)/.match(word)
         return match.post_match + match.to_s + "ay"
       elsif type == "vowel"
         return word + "way"
-      elsif !type
+      elsif type == "error"
         return "There's been an error. Check your input"
       end
     end
